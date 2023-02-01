@@ -9,6 +9,7 @@ public class GunManager : MonoBehaviour
     [SerializeField] private Transform _bulletSpawnPosition;
     [SerializeField] float _bulletForce = 20f;
     [SerializeField] InputActionReference _shootAction;
+    [SerializeField] AudioSource _audioSource;
 
     void Start()
     {
@@ -23,6 +24,9 @@ public class GunManager : MonoBehaviour
 
         GameObject bulletToSpawn = Instantiate(_bulletPrefab, _bulletSpawnPosition.position, Quaternion.identity);
         Rigidbody bulletRigidbody = bulletToSpawn.GetComponent<Rigidbody>();
+        _audioSource.Play();
         bulletRigidbody.AddForce(_bulletSpawnPosition.forward * _bulletForce, ForceMode.Impulse);
+
+        // TODO : Make a pool
     }
 }
