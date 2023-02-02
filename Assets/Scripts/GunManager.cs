@@ -15,13 +15,10 @@ public class GunManager : MonoBehaviour
     {
         _shootAction.action.Enable();
         _shootAction.action.performed += ShootBullet;
-
     }
 
     void ShootBullet(InputAction.CallbackContext obj)
     {
-        Debug.Log("Fired !");
-
         GameObject bulletToSpawn = Instantiate(_bulletPrefab, _bulletSpawnPosition.position, Quaternion.identity);
         Rigidbody bulletRigidbody = bulletToSpawn.GetComponent<Rigidbody>();
         _audioSource.Play();
