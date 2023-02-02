@@ -9,6 +9,11 @@ public class TargetManager : MonoBehaviour
 
     void Update()
     {
+        if (!_targetPosition)
+        {
+            throw new UnityException();
+        }
+
         MoveTo();
     }
 
