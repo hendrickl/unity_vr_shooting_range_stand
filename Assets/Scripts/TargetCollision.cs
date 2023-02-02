@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TargetCollision : MonoBehaviour
 {
+
     private void OnTriggerEnter(Collider other)
     {
         if (gameObject.CompareTag("BodyTarget"))
