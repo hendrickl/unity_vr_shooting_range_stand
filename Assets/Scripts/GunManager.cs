@@ -13,6 +13,7 @@ public class GunManager : MonoBehaviour
     [SerializeField] float _bulletForce = 20f;
     [SerializeField] InputActionReference _shootAction;
     [SerializeField] AudioSource _audioSource;
+    [SerializeField] AudioClip _audioClipMunition0;
 
     void Start()
     {
@@ -38,8 +39,8 @@ public class GunManager : MonoBehaviour
         }
         else
         {
-            // TODO : Audiosource for recharge
-            Debug.Log("0 Munition : " + _munitionStock);
+            _audioSource.clip = _audioClipMunition0;
+            _audioSource.Play();
         }
 
         _munitionsText.text = _munitionStock.ToString();
