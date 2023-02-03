@@ -7,7 +7,6 @@ public class TargetCollision : MonoBehaviour
 {
     private int _headScore = 0;
     private int _bodyScore = 0;
-
     [SerializeField] private TMP_Text _headScoreText;
     [SerializeField] private TMP_Text _bodyScoreText;
 

@@ -33,7 +33,6 @@ public class GunManager : MonoBehaviour
             bulletRigidbody.AddForce(_bulletSpawnPosition.forward * _bulletForce, ForceMode.Impulse);
 
             _munitionStock--;
-            Debug.Log("Munitions : " + _munitionStock);
 
             // TODO : Make a pool
         }
