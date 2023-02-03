@@ -1,23 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class TargetCollision : MonoBehaviour
 {
-    [SerializeField] private AudioSource _audioSource;
+    private int _headScore = 0;
+    private int _bodyScore = 0;
+
+    [SerializeField] private TMP_Text _headScoreText;
+    [SerializeField] private TMP_Text _bodyScoreText;
 
     private void OnTriggerEnter(Collider other)
     {
-        _audioSource.Play();
-
         if (gameObject.CompareTag("BodyTarget"))
         {
-            Debug.Log("Body Touched : " + other.name + " triggered " + gameObject.name);
+            _bodyScore++;
+            _bodyScoreText.text = _bodyScore.ToString();
         }
 
         if (gameObject.CompareTag("HeadTarget"))
         {
-            Debug.Log("Head Touched " + other.name + " triggered " + gameObject.name);
+            _headScore++;
+            _headScoreText.text = _headScore.ToString();
         }
     }
 }
