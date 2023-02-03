@@ -27,17 +27,7 @@ public class TargetCollision : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (gameObject.CompareTag("BodyTarget"))
-        {
-            _bodyScore++;
-            _bodyScoreText.text = _bodyScore.ToString();
-        }
-
-        if (gameObject.CompareTag("HeadTarget"))
-        {
-            _headScore++;
-            _headScoreText.text = _headScore.ToString();
-        }
+        Score();
     }
 
     private void LightOn()
@@ -49,5 +39,20 @@ public class TargetCollision : MonoBehaviour
             _currentLightIndex++;
         }
         _lightIsOn = false;
+    }
+
+    private void Score()
+    {
+        if (gameObject.CompareTag("BodyTarget"))
+        {
+            _bodyScore++;
+            _bodyScoreText.text = _bodyScore.ToString();
+        }
+
+        if (gameObject.CompareTag("HeadTarget"))
+        {
+            _headScore++;
+            _headScoreText.text = _headScore.ToString();
+        }
     }
 }
