@@ -967,7 +967,7 @@ GameObject:
   - component: {fileID: 353738699}
   - component: {fileID: 353738703}
   m_Layer: 0
-  m_Name: Target
+  m_Name: Target Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1478,6 +1478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 559526fe2d729d240b4f7325c40a36d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _audioSource: {fileID: 0}
 --- !u!1 &769419580
 GameObject:
   m_ObjectHideFlags: 0
@@ -2332,6 +2333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 559526fe2d729d240b4f7325c40a36d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _audioSource: {fileID: 0}
 --- !u!1 &1729575186
 GameObject:
   m_ObjectHideFlags: 0
@@ -2678,6 +2680,7 @@ MonoBehaviour:
   _shootAction: {fileID: 83097790271614945, guid: c348712bda248c246b8c49b3db54643f,
     type: 3}
   _audioSource: {fileID: 1731380014}
+  _audioClipMunition0: {fileID: 8300000, guid: 81bf476e682d0a3428f4d1bf6b68ea28, type: 3}
 --- !u!82 &1731380014
 AudioSource:
   m_ObjectHideFlags: 0

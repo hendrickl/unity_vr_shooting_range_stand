@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TargetManager : MonoBehaviour
+public class TargetContainerManager : MonoBehaviour
 {
     [SerializeField] private Transform _targetPosition;
     [SerializeField] private float _speed;
+    [SerializeField] private AudioSource _audioSource;
 
     void Update()
     {
@@ -20,5 +21,11 @@ public class TargetManager : MonoBehaviour
     private void MoveTo()
     {
         iTween.MoveTo(gameObject, iTween.Hash("position", _targetPosition, "speed", _speed, "loopType", "pingPong", "easetype", "linear"));
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        _audioSource.volume = 1f;
+        _audioSource.Play();
     }
 }
