@@ -653,7 +653,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: dbb5a17f680d69543b2e1f7813b4456b, type: 3}
       propertyPath: m_Name
-      value: laptop
+      value: Laptop
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: dbb5a17f680d69543b2e1f7813b4456b, type: 3}
       propertyPath: m_RootOrder
@@ -781,6 +781,8 @@ MonoBehaviour:
   - {fileID: 1763679842}
   - {fileID: 1311338571}
   - {fileID: 1356430887}
+  _headScoreText: {fileID: 0}
+  _bodyScoreText: {fileID: 0}
 --- !u!65 &49883188
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2407,7 +2409,7 @@ GameObject:
   - component: {fileID: 687830193}
   - component: {fileID: 687830192}
   - component: {fileID: 687830191}
-  - component: {fileID: 687830194}
+  - component: {fileID: 687830195}
   m_Layer: 0
   m_Name: Body Trigger
   m_TagString: BodyTarget
@@ -2493,7 +2495,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 687830189}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &687830194
+--- !u!114 &687830195
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2502,9 +2504,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 687830189}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 559526fe2d729d240b4f7325c40a36d3, type: 3}
+  m_Script: {fileID: 11500000, guid: 5ac54643ed86876459d1f2a56b8bb065, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _lights:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _headScoreText: {fileID: 237786258}
   _bodyScoreText: {fileID: 1203132040}
 --- !u!1 &747054112
@@ -4882,7 +4895,7 @@ GameObject:
   - component: {fileID: 1544683549}
   - component: {fileID: 1544683548}
   - component: {fileID: 1544683547}
-  - component: {fileID: 1544683550}
+  - component: {fileID: 1544683551}
   m_Layer: 0
   m_Name: Head Trigger
   m_TagString: HeadTarget
@@ -4898,8 +4911,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1544683545}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5873, y: 0.351, z: 0}
-  m_LocalScale: {x: 0.1613265, y: 0.2, z: 0.2}
+  m_LocalPosition: {x: 0.6022, y: 0.351, z: 0}
+  m_LocalScale: {x: 0.19109124, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 353738702}
@@ -4916,8 +4929,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.93700314, z: 1.1453446}
-  m_Center: {x: -1.2384469e-17, y: -0.032514337, z: 0.049573813}
+  m_Size: {x: 1.5785667, y: 0.93700314, z: 1.1453446}
+  m_Center: {x: 0.2892834, y: -0.032514337, z: 0.049573813}
 --- !u!23 &1544683548
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4968,7 +4981,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1544683545}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1544683550
+--- !u!114 &1544683551
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4977,9 +4990,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 1544683545}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 559526fe2d729d240b4f7325c40a36d3, type: 3}
+  m_Script: {fileID: 11500000, guid: 5ac54643ed86876459d1f2a56b8bb065, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _lights:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _headScoreText: {fileID: 237786258}
   _bodyScoreText: {fileID: 1203132040}
 --- !u!1 &1729575186
@@ -6847,6 +6871,8 @@ MonoBehaviour:
   - {fileID: 1763679842}
   - {fileID: 1311338571}
   - {fileID: 1356430887}
+  _headScoreText: {fileID: 0}
+  _bodyScoreText: {fileID: 0}
 --- !u!65 &2144652232
 BoxCollider:
   m_ObjectHideFlags: 0
