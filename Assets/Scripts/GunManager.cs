@@ -25,16 +25,20 @@ public class GunManager : MonoBehaviour
     {
         if (_munitionStock != 0)
         {
-            GameObject bulletToSpawn = Instantiate(_bulletPrefab, _bulletSpawnPosition.position, Quaternion.identity);
-            Rigidbody bulletRigidbody = bulletToSpawn.GetComponent<Rigidbody>();
+            RaycastHit hit;
+            if (Physics.Raycast(_bulletSpawnPosition.position, _bulletSpawnPosition.forward, out hit, Mathf.Infinity))
+            {
+                Debug.Log("Hit " + hit.collider.gameObject.name);
 
-            _audioSource.Play();
+                GameObject bulletToSpawn = Instantiate(_bulletPrefab, _bulletSpawnPosition.position, Quaternion.identity);
+                Rigidbody bulletRigidbody = bulletToSpawn.GetComponent<Rigidbody>();
 
-            bulletRigidbody.AddForce(_bulletSpawnPosition.forward * _bulletForce, ForceMode.Impulse);
+                _audioSource.Play();
 
-            _munitionStock--;
+                bulletRigidbody.AddForce(_bulletSpawnPosition.forward * _bulletForce, ForceMode.Impulse);
 
-            // TODO : Make a pool
+                _munitionStock--;
+            }
         }
         else
         {
