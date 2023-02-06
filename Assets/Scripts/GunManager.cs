@@ -10,7 +10,7 @@ public class GunManager : MonoBehaviour
     [SerializeField] private TMP_Text _munitionsText;
     [SerializeField] private GameObject _bulletPrefab;
     [SerializeField] private Transform _bulletSpawnPosition;
-    [SerializeField] private float _bulletForce = 20f;
+    [SerializeField] private float _bulletForce = 100f;
     [SerializeField] private InputActionReference _shootAction;
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip _audioClipMunition0;
