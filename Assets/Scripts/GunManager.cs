@@ -10,18 +10,18 @@ public class GunManager : MonoBehaviour
     [SerializeField] private TMP_Text _munitionsText;
     [SerializeField] private GameObject _bulletPrefab;
     [SerializeField] private Transform _bulletSpawnPosition;
-    [SerializeField] float _bulletForce = 20f;
-    [SerializeField] InputActionReference _shootAction;
-    [SerializeField] AudioSource _audioSource;
-    [SerializeField] AudioClip _audioClipMunition0;
+    [SerializeField] private float _bulletForce = 20f;
+    [SerializeField] private InputActionReference _shootAction;
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip _audioClipMunition0;
 
-    void Start()
+    private void Start()
     {
         _shootAction.action.Enable();
         _shootAction.action.performed += ShootBullet;
     }
 
-    void ShootBullet(InputAction.CallbackContext obj)
+    private void ShootBullet(InputAction.CallbackContext obj)
     {
         if (_munitionStock != 0)
         {
