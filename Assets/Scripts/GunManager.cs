@@ -12,6 +12,7 @@ public class GunManager : MonoBehaviour
     private int _bodyScore = 0;
     private bool _lightIsOn = false;
     private int _currentLightIndex = 0;
+    private bool _hasReload = false;
 
     [SerializeField] private TMP_Text _munitionsText;
     [SerializeField] private TMP_Text _headScoreText;
@@ -41,10 +42,11 @@ public class GunManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (_munitionStock == 0)
+        if (_munitionStock == 0 && !_hasReload)
         {
             ReloadBullet(other);
             DisplayMunitionAmount();
+            LightOff();
         }
     }
 
@@ -56,6 +58,7 @@ public class GunManager : MonoBehaviour
             PlayAudioClip(_audioClipShoot);
             Score();
             _munitionStock--;
+            _hasReload = false;
         }
         else
         {
@@ -92,6 +95,7 @@ public class GunManager : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Reload"))
         {
+            _hasReload = true;
             PlayAudioClip(_audioClipReload);
             other.gameObject.SetActive(false);
             _munitionStock = 10;
@@ -113,6 +117,15 @@ public class GunManager : MonoBehaviour
             _currentLightIndex++;
         }
         _lightIsOn = false;
+    }
+
+    private void LightOff()
+    {
+        for (int i = 0; i < _lights.Length; i++)
+        {
+            _currentLightIndex = 0;
+            _lights[i].gameObject.SetActive(false);
+        }
     }
 
     private void DisplayMunitionAmount()
