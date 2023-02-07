@@ -18,6 +18,8 @@ public class GunManager : MonoBehaviour
     [SerializeField] private TMP_Text _bodyScoreText;
 
     [SerializeField] private GameObject _bulletPrefab;
+    [SerializeField] private GameObject _impactPrefab;
+    [SerializeField] private GameObject _targetContainer;
     [SerializeField] private Transform _bulletSpawnPosition;
     [SerializeField] private float _bulletForce = 100f;
 
@@ -26,6 +28,7 @@ public class GunManager : MonoBehaviour
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip _audioClipMunition0;
     [SerializeField] private AudioClip _audioClipShoot;
+    [SerializeField] private AudioClip _audioClipReload;
     [SerializeField] private AudioClip _audioClipReloadMunition;
 
     [SerializeField] private Light[] _lights = new Light[10];
@@ -36,6 +39,11 @@ public class GunManager : MonoBehaviour
         _shootAction.action.performed += ShootBullet;
     }
 
+    private void OnCollisionEnter(Collision other)
+    {
+        print(other.gameObject.name + " triggers " + gameObject.name);
+    }
+
     private void ShootBullet(InputAction.CallbackContext obj)
     {
         if (_munitionStock != 0)
@@ -43,6 +51,7 @@ public class GunManager : MonoBehaviour
             RaycastShooter();
             PlayAudioClip(_audioClipShoot);
             _munitionStock--;
+            Score();
         }
         else
         {
@@ -50,7 +59,6 @@ public class GunManager : MonoBehaviour
         }
 
         DisplayMunition();
-        Score();
     }
 
     private void RaycastShooter()
@@ -64,14 +72,21 @@ public class GunManager : MonoBehaviour
             GameObject bulletToSpawn = Instantiate(_bulletPrefab, _bulletSpawnPosition.position, Quaternion.identity);
             Rigidbody bulletRigidbody = bulletToSpawn.GetComponent<Rigidbody>();
             bulletRigidbody.AddForce(_bulletSpawnPosition.forward * _bulletForce, ForceMode.Impulse);
+
+            RaycastImpactMarker();
         }
+    }
+
+    private void RaycastImpactMarker()
+    {
+        Vector3 hitPosition = hit.point;
+        GameObject impactToSpawn = Instantiate(_impactPrefab, hitPosition, Quaternion.identity);
+        impactToSpawn.transform.SetParent(_targetContainer.transform);
     }
 
     private void reloadBullet()
     {
-        // trigger clip + gun
-        _audioSource.clip = _audioClipReloadMunition;
-        _audioSource.Play();
+        PlayAudioClip(_audioClipReload);
     }
 
     private void PlayAudioClip(AudioClip clip)
@@ -101,7 +116,6 @@ public class GunManager : MonoBehaviour
         if (hit.collider.gameObject.CompareTag("BodyTarget"))
         {
             LightOn();
-            Debug.Log("Body score : " + _bodyScore);
             _bodyScore++;
             _bodyScoreText.text = _bodyScore.ToString();
         }
@@ -109,7 +123,6 @@ public class GunManager : MonoBehaviour
         if (hit.collider.gameObject.CompareTag("HeadTarget"))
         {
             LightOn();
-            Debug.Log("Head score : " + _headScore);
             _headScore++;
             _headScoreText.text = _headScore.ToString();
         }

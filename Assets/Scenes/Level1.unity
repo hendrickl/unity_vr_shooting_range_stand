@@ -508,6 +508,9 @@ MonoBehaviour:
   _bodyScoreText: {fileID: 1203132040}
   _bulletPrefab: {fileID: 2898016470251946403, guid: 2efb551c65ae6bc4a9d8b4c69592e510,
     type: 3}
+  _impactPrefab: {fileID: 1439645569859799976, guid: 7f5a1c1c96943c7408a430f380125907,
+    type: 3}
+  _targetContainer: {fileID: 353738698}
   _bulletSpawnPosition: {fileID: 1799287818}
   _bulletForce: 100
   _shootAction: {fileID: 83097790271614945, guid: c348712bda248c246b8c49b3db54643f,
@@ -515,6 +518,7 @@ MonoBehaviour:
   _audioSource: {fileID: 194501881}
   _audioClipMunition0: {fileID: 8300000, guid: 81bf476e682d0a3428f4d1bf6b68ea28, type: 3}
   _audioClipShoot: {fileID: 8300000, guid: 9fa6dc784d19b1e4fb70e7d827a5d600, type: 3}
+  _audioClipReload: {fileID: 8300000, guid: c09493657b24f9b40bf7430a3c12925f, type: 3}
   _audioClipReloadMunition: {fileID: 8300000, guid: c09493657b24f9b40bf7430a3c12925f,
     type: 3}
   _lights:
@@ -1253,7 +1257,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 353738698}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 6.54, y: 1.95, z: 9.91}
+  m_LocalPosition: {x: 0.61, y: 1.95, z: 9.91}
   m_LocalScale: {x: 0.1, y: 1.4234279, z: 1.4234279}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1278,7 +1282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetPosition: {fileID: 105579865}
-  _speed: 2.5
+  _speed: 0
   _audioSource: {fileID: 353738704}
 --- !u!82 &353738704
 AudioSource:
