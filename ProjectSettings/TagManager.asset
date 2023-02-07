@@ -6,6 +6,7 @@ TagManager:
   tags:
   - BodyTarget
   - HeadTarget
+  - Reload
   layers:
   - Default
   - TransparentFX

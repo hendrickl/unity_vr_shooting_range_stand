@@ -39,9 +39,18 @@ public class GunManager : MonoBehaviour
         _shootAction.action.performed += ShootBullet;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (_munitionStock == 0)
+        {
+            ReloadBullet(other);
+            DisplayMunitionAmount();
+        }
+    }
+
     private void ShootBullet(InputAction.CallbackContext obj)
     {
-        if (_munitionStock != 0)
+        if (_munitionStock > 0)
         {
             RaycastShooter();
             PlayAudioClip(_audioClipShoot);
@@ -79,9 +88,14 @@ public class GunManager : MonoBehaviour
         impactToSpawn.transform.SetParent(_targetContainer.transform);
     }
 
-    private void reloadBullet()
+    private void ReloadBullet(Collider other)
     {
-        PlayAudioClip(_audioClipReload);
+        if (other.gameObject.CompareTag("Reload"))
+        {
+            PlayAudioClip(_audioClipReload);
+            other.gameObject.SetActive(false);
+            _munitionStock = 10;
+        }
     }
 
     private void PlayAudioClip(AudioClip clip)
