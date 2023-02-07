@@ -105,6 +105,7 @@ public class GunManager : MonoBehaviour
     private void PlayAudioClip(AudioClip clip)
     {
         _audioSource.clip = clip;
+        _audioSource.volume = 1f;
         _audioSource.Play();
     }
 
@@ -137,7 +138,6 @@ public class GunManager : MonoBehaviour
     {
         if (hit.collider.gameObject.CompareTag("BodyTarget"))
         {
-            LightOn();
             _bodyScore++;
             _bodyScoreText.text = _bodyScore.ToString();
         }
