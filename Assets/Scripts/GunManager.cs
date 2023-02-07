@@ -39,26 +39,21 @@ public class GunManager : MonoBehaviour
         _shootAction.action.performed += ShootBullet;
     }
 
-    private void OnCollisionEnter(Collision other)
-    {
-        print(other.gameObject.name + " triggers " + gameObject.name);
-    }
-
     private void ShootBullet(InputAction.CallbackContext obj)
     {
         if (_munitionStock != 0)
         {
             RaycastShooter();
             PlayAudioClip(_audioClipShoot);
-            _munitionStock--;
             Score();
+            _munitionStock--;
         }
         else
         {
             PlayAudioClip(_audioClipMunition0);
         }
 
-        DisplayMunition();
+        DisplayMunitionAmount();
     }
 
     private void RaycastShooter()
@@ -106,7 +101,7 @@ public class GunManager : MonoBehaviour
         _lightIsOn = false;
     }
 
-    private void DisplayMunition()
+    private void DisplayMunitionAmount()
     {
         _munitionsText.text = _munitionStock.ToString();
     }
