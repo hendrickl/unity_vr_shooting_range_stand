@@ -40,16 +40,9 @@ public class GunManager : MonoBehaviour
     {
         if (_munitionStock != 0)
         {
-            if (Physics.Raycast(_bulletSpawnPosition.position, _bulletSpawnPosition.forward, out hit, Mathf.Infinity))
-            {
-                GameObject bulletToSpawn = Instantiate(_bulletPrefab, _bulletSpawnPosition.position, Quaternion.identity);
-                Rigidbody bulletRigidbody = bulletToSpawn.GetComponent<Rigidbody>();
-
-                PlayAudioClip(_audioClipShoot);
-
-                bulletRigidbody.AddForce(_bulletSpawnPosition.forward * _bulletForce, ForceMode.Impulse);
-                _munitionStock--;
-            }
+            RaycastShooter();
+            PlayAudioClip(_audioClipShoot);
+            _munitionStock--;
         }
         else
         {
@@ -58,6 +51,20 @@ public class GunManager : MonoBehaviour
 
         DisplayMunition();
         Score();
+    }
+
+    private void RaycastShooter()
+    {
+        if (!Physics.Raycast(_bulletSpawnPosition.position, _bulletSpawnPosition.forward, out hit, Mathf.Infinity))
+        {
+            throw new UnityException();
+        }
+        else
+        {
+            GameObject bulletToSpawn = Instantiate(_bulletPrefab, _bulletSpawnPosition.position, Quaternion.identity);
+            Rigidbody bulletRigidbody = bulletToSpawn.GetComponent<Rigidbody>();
+            bulletRigidbody.AddForce(_bulletSpawnPosition.forward * _bulletForce, ForceMode.Impulse);
+        }
     }
 
     private void reloadBullet()
@@ -106,10 +113,5 @@ public class GunManager : MonoBehaviour
             _headScore++;
             _headScoreText.text = _headScore.ToString();
         }
-    }
-
-    private void RaycastEngine()
-    {
-
     }
 }
