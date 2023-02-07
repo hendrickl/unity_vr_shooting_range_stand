@@ -336,46 +336,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1482489518}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &111478633 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 4835553573746817161, guid: 23e550b0a6bbc4143b66097020e310d8,
-    type: 3}
-  m_PrefabInstance: {fileID: 1482489518}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &111478642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 111478632}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6932c4c03dd5cd04586f2bcd9ff5b603, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _munitionsText: {fileID: 2123368194}
-  _headScoreText: {fileID: 0}
-  _bodyScoreText: {fileID: 0}
-  _bulletPrefab: {fileID: 2898016470251946403, guid: 2efb551c65ae6bc4a9d8b4c69592e510,
-    type: 3}
-  _bulletSpawnPosition: {fileID: 1799287818}
-  _bulletForce: 100
-  _shootAction: {fileID: 83097790271614945, guid: c348712bda248c246b8c49b3db54643f,
-    type: 3}
-  _audioSource: {fileID: 111478633}
-  _audioClipMunition0: {fileID: 8300000, guid: 81bf476e682d0a3428f4d1bf6b68ea28, type: 3}
-  _lights:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &126376630
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,6 +514,9 @@ MonoBehaviour:
     type: 3}
   _audioSource: {fileID: 194501881}
   _audioClipMunition0: {fileID: 8300000, guid: 81bf476e682d0a3428f4d1bf6b68ea28, type: 3}
+  _audioClipShoot: {fileID: 8300000, guid: 9fa6dc784d19b1e4fb70e7d827a5d600, type: 3}
+  _audioClipReloadMunition: {fileID: 8300000, guid: c09493657b24f9b40bf7430a3c12925f,
+    type: 3}
   _lights:
   - {fileID: 301381085}
   - {fileID: 1319790539}
@@ -572,13 +535,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 194501880}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.015890338, y: 1.3148851, z: 0.00082294643}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.7071068, y: -0.7071068, z: -0, w: 0}
+  m_LocalPosition: {x: 2.3277533, y: -2.9007854, z: -1.1701647}
+  m_LocalScale: {x: 7.1428556, y: 7.1428556, z: 7.1428537}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_Father: {fileID: 3234460617215478553}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &199286902
 PrefabInstance:
@@ -1290,7 +1253,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 353738698}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.54, y: 1.95, z: 9.91}
+  m_LocalPosition: {x: 6.54, y: 1.95, z: 9.91}
   m_LocalScale: {x: 0.1, y: 1.4234279, z: 1.4234279}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1315,7 +1278,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetPosition: {fileID: 105579865}
-  _speed: 0
+  _speed: 2.5
   _audioSource: {fileID: 353738704}
 --- !u!82 &353738704
 AudioSource:
@@ -4415,6 +4378,7 @@ PrefabInstance:
     - {fileID: 4835553572023267001, guid: 23e550b0a6bbc4143b66097020e310d8, type: 3}
     - {fileID: 4835553572023267003, guid: 23e550b0a6bbc4143b66097020e310d8, type: 3}
     - {fileID: 4835553572023267002, guid: 23e550b0a6bbc4143b66097020e310d8, type: 3}
+    - {fileID: 4835553573746817161, guid: 23e550b0a6bbc4143b66097020e310d8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 23e550b0a6bbc4143b66097020e310d8, type: 3}
 --- !u!1 &1544683545
 GameObject:
@@ -4816,7 +4780,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3234460617215478553}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 154.062, y: 0, z: 0}
 --- !u!1 &1823049154
 GameObject:
@@ -5562,10 +5526,15 @@ PrefabInstance:
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 1907744209}
+    - target: {fileID: 3234460617215478551, guid: 169360a5107829247ac567f74884d030,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5146519192410570564, guid: 169360a5107829247ac567f74884d030,
         type: 3}
       propertyPath: m_Name
-      value: Gun9mm
+      value: Gun 9mm
       objectReference: {fileID: 0}
     - target: {fileID: 5487578270191642110, guid: 169360a5107829247ac567f74884d030,
         type: 3}
@@ -5768,7 +5737,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
 --- !u!4 &8379499724742544345 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7892126358032735473, guid: fab699706a85b804ead6933bc217a366,
