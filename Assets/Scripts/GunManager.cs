@@ -34,12 +34,6 @@ public class GunManager : MonoBehaviour
 
     [SerializeField] private Light[] _lights = new Light[10];
 
-    private void Start()
-    {
-        _shootAction.action.Enable();
-        _shootAction.action.performed += ShootBullet;
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (_munitionStock == 0 && !_hasReload)
@@ -50,7 +44,7 @@ public class GunManager : MonoBehaviour
         }
     }
 
-    private void ShootBullet(InputAction.CallbackContext obj)
+    public void ShootBullet()
     {
         if (_munitionStock > 0)
         {
