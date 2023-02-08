@@ -5,8 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private AudioSource _audioLoadScene;
-    [SerializeField] private AudioSource _audioExitGame;
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip _audioLoadScene;
+    [SerializeField] private AudioClip _audioExitGame;
 
     public void LoadScene(int index)
     {
@@ -15,7 +16,7 @@ public class GameManager : MonoBehaviour
 
     public void InvokeLoadScene(int index)
     {
-        _audioLoadScene.Play();
+        PlayAudioClip(_audioLoadScene);
         StartCoroutine(WaitAndLoadScene_Coroutine(index, 1f));
     }
 
@@ -27,9 +28,20 @@ public class GameManager : MonoBehaviour
 
     public void ExitGame()
     {
-        _audioExitGame.volume = 1f;
-        _audioExitGame.Play();
+        PlayAudioClip(_audioExitGame);
         Application.Quit();
         Debug.Log("Exit pressed");
+    }
+
+    private void PlayAudioClip(AudioClip clip)
+    {
+        _audioSource.clip = clip;
+        _audioSource.volume = 1f;
+        _audioSource.Play();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        print(other.gameObject.name + " triggers " + gameObject.name);
     }
 }
