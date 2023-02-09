@@ -8,7 +8,7 @@ public class TargetContainerManager : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private AudioSource _audioSource;
 
-    void Update()
+    private void Update()
     {
         if (!_targetPosition)
         {

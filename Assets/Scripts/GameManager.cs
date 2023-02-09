@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public void InvokeLoadScene(int index)
     {
         PlayAudioClip(_audioLoadScene);
-        StartCoroutine(WaitAndLoadScene_Coroutine(index, 1f));
+        StartCoroutine(WaitAndLoadScene_Coroutine(index, 0.25f));
     }
 
     private IEnumerator WaitAndLoadScene_Coroutine(int index, float time)
@@ -38,10 +38,5 @@ public class GameManager : MonoBehaviour
         _audioSource.clip = clip;
         _audioSource.volume = 1f;
         _audioSource.Play();
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        print(other.gameObject.name + " triggers " + gameObject.name);
     }
 }
