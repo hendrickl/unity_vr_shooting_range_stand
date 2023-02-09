@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class TargetManager : MonoBehaviour
 {
+    public bool Switch;
     [SerializeField] private GameObject _movingTarget;
     [SerializeField] private GameObject _fixedTarget;
     [SerializeField] private Transform _movingTargetPosition;
-    [SerializeField] private Transform _fixedTargetPosition;
+    [SerializeField] private Transform _fixedTargetTowardPlayerPosition;
+    [SerializeField] private Transform _fixedTargetTowardBgPosition;
     [SerializeField] private float _speed;
     [SerializeField] private float _speedOnSwitch;
     [SerializeField] private AudioSource _audioSource;
@@ -33,9 +35,26 @@ public class TargetManager : MonoBehaviour
         iTween.MoveTo(_movingTarget, iTween.Hash("position", _movingTargetPosition, "speed", _speed, "loopType", "pingPong", "easetype", "linear"));
     }
 
-    public void MoveFixedTarget()
+    public void MoveFixedTargetTowardPlayer()
     {
-        iTween.MoveTo(_fixedTarget, iTween.Hash("position", _fixedTargetPosition, "speed", _speedOnSwitch, "easetype", "linear"));
+        if (Switch == false)
+        {
+            print("Target moves toward player");
+            iTween.MoveTo(_fixedTarget, iTween.Hash("position", _fixedTargetTowardPlayerPosition, "speed", _speedOnSwitch, "easetype", "linear"));
+            Switch = true;
+            print("Switch = " + Switch);
+        }
+    }
+
+    public void MoveFixedTargetTowardBg()
+    {
+        if (Switch)
+        {
+            print("Target moves toward Bg");
+            iTween.MoveTo(_fixedTarget, iTween.Hash("position", _fixedTargetTowardBgPosition, "speed", _speedOnSwitch, "easetype", "linear"));
+            Switch = false;
+            print("Switch = " + Switch);
+        }
     }
 
     private void PlayAudioClip(AudioClip clip)
