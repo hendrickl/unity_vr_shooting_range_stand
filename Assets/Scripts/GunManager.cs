@@ -20,11 +20,10 @@ public class GunManager : MonoBehaviour
 
     [SerializeField] private GameObject _bulletPrefab;
     [SerializeField] private GameObject _impactPrefab;
-    [SerializeField] private GameObject _targetContainer;
+    [SerializeField] private GameObject _targetFixedContainer;
+    [SerializeField] private GameObject _targetMovingContainer;
     [SerializeField] private Transform _bulletSpawnPosition;
     [SerializeField] private float _bulletForce = 100f;
-
-    [SerializeField] private InputActionReference _shootAction;
 
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip _audioClipMunition0;
@@ -82,7 +81,8 @@ public class GunManager : MonoBehaviour
     {
         Vector3 hitPosition = hit.point;
         GameObject impactToSpawn = Instantiate(_impactPrefab, hitPosition, Quaternion.identity);
-        impactToSpawn.transform.SetParent(_targetContainer.transform);
+
+        impactToSpawn.transform.SetParent(_targetFixedContainer.transform);
     }
 
     private void ReloadBullet(Collider other)

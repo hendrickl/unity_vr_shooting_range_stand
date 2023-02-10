@@ -9,7 +9,7 @@ TagManager:
   - Reload
   - Gun
   - TargetFixed
-  - TargetMobile
+  - TargetMoving
   layers:
   - Default
   - TransparentFX
