@@ -33,7 +33,6 @@ public class TargetManager : MonoBehaviour
         }
 
         MoveMovingTarget();
-        MoveTest();
     }
 
     private void OnCollisionEnter(Collision other)
@@ -43,7 +42,25 @@ public class TargetManager : MonoBehaviour
 
     public void MoveMovingTarget()
     {
-        iTween.MoveTo(_movingTarget, iTween.Hash("position", _movingTargetPosition, "speed", _speed, "loopType", "pingPong", "easetype", "linear"));
+        float _distance = Vector3.Distance(transform.position, _currentTarget);
+
+        if (_distance <= _speed * Time.deltaTime)
+        {
+            transform.position = _currentTarget;
+
+            if (_currentTarget == _waypointB.position)
+            {
+                _currentTarget = _waypointA.position;
+            }
+            else
+            {
+                _currentTarget = _waypointB.position;
+            }
+        }
+        else
+        {
+            transform.position = Vector3.MoveTowards(transform.position, _currentTarget, _speed * Time.deltaTime);
+        }
     }
 
     public void MoveFixedTargetTowardPlayer()
@@ -78,32 +95,5 @@ public class TargetManager : MonoBehaviour
         _audioSource.clip = clip;
         _audioSource.volume = 1f;
         _audioSource.Play();
-    }
-
-    private void MoveTest()
-    {
-        // Calculer la distance entre le gameobject et le point cible
-        float _distance = Vector3.Distance(transform.position, _currentTarget);
-
-        // Si la distance est inférieure à la vitesse de déplacement, le gameobject atteint le point cible
-        if (_distance <= _speed * Time.deltaTime)
-        {
-            transform.position = _currentTarget;
-
-            // Changement de cible
-            if (_currentTarget == _waypointB.position)
-            {
-                _currentTarget = _waypointA.position;
-            }
-            else
-            {
-                _currentTarget = _waypointB.position;
-            }
-        }
-        else
-        {
-            // Déplacement du gameobject vers la cible
-            transform.position = Vector3.MoveTowards(transform.position, _currentTarget, _speed * Time.deltaTime);
-        }
     }
 }
