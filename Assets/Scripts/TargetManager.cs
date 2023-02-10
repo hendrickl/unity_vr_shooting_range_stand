@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class TargetManager : MonoBehaviour
 {
-    public bool Switch;
+    private bool _switch;
+    private bool _activateMovement;
 
     private Vector3 _currentTarget;
     [SerializeField] private GameObject _fixedTarget;
@@ -26,7 +27,10 @@ public class TargetManager : MonoBehaviour
 
     private void Update()
     {
-        ActivateMovingTarget();
+        if (_activateMovement)
+        {
+            ActivateMovingTarget();
+        }
     }
 
     private void OnCollisionEnter(Collision other)
@@ -36,6 +40,9 @@ public class TargetManager : MonoBehaviour
 
     public void ActivateMovingTarget()
     {
+        _activateMovement = true;
+        _speed = 1.5f;
+
         float _distance = Vector3.Distance(transform.position, _currentTarget);
 
         if (_distance <= _speed * Time.deltaTime)
@@ -57,25 +64,32 @@ public class TargetManager : MonoBehaviour
         }
     }
 
+    public void DeactivateMovingTarget()
+    {
+        _activateMovement = false;
+        _speed = 0f;
+        gameObject.transform.position = _fixedTargetTowardBgPosition.position;
+    }
+
     public void MoveFixedTargetTowardPlayer()
     {
-        if (Switch == false)
+        if (_switch == false)
         {
             print("Target moves toward player");
             iTween.MoveTo(_fixedTarget, iTween.Hash("position", _fixedTargetTowardPlayerPosition, "speed", _speedOnSwitch, "easetype", "linear"));
-            Switch = true;
-            print("Switch = " + Switch);
+            _switch = true;
+            print("_switch = " + _switch);
         }
     }
 
     public void MoveFixedTargetTowardBg()
     {
-        if (Switch)
+        if (_switch)
         {
             print("Target moves toward Bg");
             iTween.MoveTo(_fixedTarget, iTween.Hash("position", _fixedTargetTowardBgPosition, "speed", _speedOnSwitch, "easetype", "linear"));
-            Switch = false;
-            print("Switch = " + Switch);
+            _switch = false;
+            print("_switch = " + _switch);
         }
     }
 
