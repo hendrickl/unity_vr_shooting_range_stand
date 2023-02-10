@@ -7,32 +7,26 @@ public class TargetManager : MonoBehaviour
     public bool Switch;
 
     private Vector3 _currentTarget;
-    [SerializeField] private Transform _waypointA;
-    [SerializeField] private Transform _waypointB;
-
-    [SerializeField] private GameObject _movingTarget;
     [SerializeField] private GameObject _fixedTarget;
-    [SerializeField] private Transform _movingTargetPosition;
+    [SerializeField] private Transform _movingTargetPositionA;
+    [SerializeField] private Transform _movingTargetPositionB;
     [SerializeField] private Transform _fixedTargetTowardPlayerPosition;
     [SerializeField] private Transform _fixedTargetTowardBgPosition;
+
     [SerializeField] private float _speed;
     [SerializeField] private float _speedOnSwitch;
+
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip _impactSound;
 
     private void Start()
     {
-        _currentTarget = _waypointA.transform.position;
+        _currentTarget = _movingTargetPositionA.transform.position;
     }
 
     private void Update()
     {
-        if (!_movingTargetPosition)
-        {
-            throw new UnityException();
-        }
-
-        MoveMovingTarget();
+        ActivateMovingTarget();
     }
 
     private void OnCollisionEnter(Collision other)
@@ -40,7 +34,7 @@ public class TargetManager : MonoBehaviour
         PlayAudioClip(_impactSound);
     }
 
-    public void MoveMovingTarget()
+    public void ActivateMovingTarget()
     {
         float _distance = Vector3.Distance(transform.position, _currentTarget);
 
@@ -48,13 +42,13 @@ public class TargetManager : MonoBehaviour
         {
             transform.position = _currentTarget;
 
-            if (_currentTarget == _waypointB.position)
+            if (_currentTarget == _movingTargetPositionB.position)
             {
-                _currentTarget = _waypointA.position;
+                _currentTarget = _movingTargetPositionA.position;
             }
             else
             {
-                _currentTarget = _waypointB.position;
+                _currentTarget = _movingTargetPositionB.position;
             }
         }
         else
