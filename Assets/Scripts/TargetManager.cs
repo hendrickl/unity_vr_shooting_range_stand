@@ -59,6 +59,11 @@ public class TargetManager : MonoBehaviour
 
     private void PlayAudioClip(AudioClip clip)
     {
+        if (!_audioSource)
+        {
+            throw new UnityException();
+        }
+
         _audioSource.clip = clip;
         _audioSource.volume = 1f;
         _audioSource.Play();
