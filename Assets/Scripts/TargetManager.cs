@@ -75,10 +75,8 @@ public class TargetManager : MonoBehaviour
     {
         if (_switch == false && !_activateMovement)
         {
-            print("Target moves toward player");
-            iTween.MoveTo(_fixedTarget, iTween.Hash("position", _fixedTargetTowardPlayerPosition, "speed", _speedOnSwitch, "easetype", "linear"));
             _switch = true;
-            print("_switch = " + _switch);
+            iTween.MoveTo(_fixedTarget, iTween.Hash("position", _fixedTargetTowardPlayerPosition, "speed", _speedOnSwitch, "easetype", "linear"));
         }
     }
 
@@ -86,10 +84,8 @@ public class TargetManager : MonoBehaviour
     {
         if (_switch)
         {
-            print("Target moves toward Bg");
-            iTween.MoveTo(_fixedTarget, iTween.Hash("position", _fixedTargetTowardBgPosition, "speed", _speedOnSwitch, "easetype", "linear"));
             _switch = false;
-            print("_switch = " + _switch);
+            iTween.MoveTo(_fixedTarget, iTween.Hash("position", _fixedTargetTowardBgPosition, "speed", _speedOnSwitch, "easetype", "linear"));
         }
     }
 

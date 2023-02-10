@@ -30,7 +30,6 @@ public class GameManager : MonoBehaviour
     {
         PlayAudioClip(_audioExitGame);
         Application.Quit();
-        Debug.Log("Exit pressed");
     }
 
     private void PlayAudioClip(AudioClip clip)
