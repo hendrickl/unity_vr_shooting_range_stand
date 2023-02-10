@@ -27,7 +27,7 @@ public class TargetManager : MonoBehaviour
 
     private void Update()
     {
-        if (_activateMovement)
+        if (_activateMovement && !_switch)
         {
             ActivateMovingTarget();
         }
@@ -73,7 +73,7 @@ public class TargetManager : MonoBehaviour
 
     public void MoveFixedTargetTowardPlayer()
     {
-        if (_switch == false)
+        if (_switch == false && !_activateMovement)
         {
             print("Target moves toward player");
             iTween.MoveTo(_fixedTarget, iTween.Hash("position", _fixedTargetTowardPlayerPosition, "speed", _speedOnSwitch, "easetype", "linear"));
