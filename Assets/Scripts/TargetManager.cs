@@ -5,6 +5,11 @@ using UnityEngine;
 public class TargetManager : MonoBehaviour
 {
     public bool Switch;
+
+    private Vector3 _currentTarget;
+    [SerializeField] private Transform _waypointA;
+    [SerializeField] private Transform _waypointB;
+
     [SerializeField] private GameObject _movingTarget;
     [SerializeField] private GameObject _fixedTarget;
     [SerializeField] private Transform _movingTargetPosition;
@@ -15,6 +20,11 @@ public class TargetManager : MonoBehaviour
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip _impactSound;
 
+    private void Start()
+    {
+        _currentTarget = _waypointA.transform.position;
+    }
+
     private void Update()
     {
         if (!_movingTargetPosition)
@@ -23,6 +33,7 @@ public class TargetManager : MonoBehaviour
         }
 
         MoveMovingTarget();
+        MoveTest();
     }
 
     private void OnCollisionEnter(Collision other)
@@ -67,5 +78,32 @@ public class TargetManager : MonoBehaviour
         _audioSource.clip = clip;
         _audioSource.volume = 1f;
         _audioSource.Play();
+    }
+
+    private void MoveTest()
+    {
+        // Calculer la distance entre le gameobject et le point cible
+        float _distance = Vector3.Distance(transform.position, _currentTarget);
+
+        // Si la distance est inférieure à la vitesse de déplacement, le gameobject atteint le point cible
+        if (_distance <= _speed * Time.deltaTime)
+        {
+            transform.position = _currentTarget;
+
+            // Changement de cible
+            if (_currentTarget == _waypointB.position)
+            {
+                _currentTarget = _waypointA.position;
+            }
+            else
+            {
+                _currentTarget = _waypointB.position;
+            }
+        }
+        else
+        {
+            // Déplacement du gameobject vers la cible
+            transform.position = Vector3.MoveTowards(transform.position, _currentTarget, _speed * Time.deltaTime);
+        }
     }
 }
