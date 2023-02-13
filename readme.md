@@ -6,7 +6,7 @@ This project is a prototype of a virtual reality application for shooting traini
 
 - Realistic virtual shooting environment.
 - Moving targets to increase difficulty.
-- Scores and statistics to track your progress.
+- Scores to track your progress.
 
 ## Requirements
 
