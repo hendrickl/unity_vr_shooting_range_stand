@@ -22,4 +22,4 @@ This project is a prototype of a virtual reality application for shooting traini
 
 ## Contributing
 
-If you want to contribute to this project, you can create pull requests with your modifications. We appreciate all contributions that can improve the application.
+If you want to contribute to this project, you can create pull requests with your modifications. I appreciate all contributions that can improve the application.
