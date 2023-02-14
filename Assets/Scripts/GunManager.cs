@@ -103,6 +103,19 @@ public class GunManager : MonoBehaviour
         _audioSource.Play();
     }
 
+    public void StopAudio()
+    {
+        if (!_audioSource)
+        {
+            Debug.LogWarning("Audio source is not defined");
+            throw new UnityException();
+        }
+
+        print("Stop audio");
+        // _audioSource.volume = 0f;
+        _audioSource.Stop();
+    }
+
     private void LightOn()
     {
         if (_currentLightIndex < _lights.Length)

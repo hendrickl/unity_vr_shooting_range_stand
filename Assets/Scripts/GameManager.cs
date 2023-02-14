@@ -38,4 +38,17 @@ public class GameManager : MonoBehaviour
         _audioSource.volume = 1f;
         _audioSource.Play();
     }
+
+    public void StopAudio()
+    {
+        if (!_audioSource)
+        {
+            Debug.LogWarning("Audio source is not defined");
+            throw new UnityException();
+        }
+
+        print("Stop audio");
+        _audioSource.Stop();
+        // _audioSource.volume = 0f;
+    }
 }
