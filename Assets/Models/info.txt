@@ -1,0 +1,8 @@
+Name: tree_1
+Version: 2016
+Polys: 33 800
+XForm: Yes
+Box Trick: Yes
+Model Parts: 3
+Render: Corona
+Formats: 3Ds Max 2016, OBJ, FBX, 3DS
