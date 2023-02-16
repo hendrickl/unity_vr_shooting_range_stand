@@ -899,7 +899,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_System: {fileID: 948337167}
-  m_TurnSpeed: 25
+  m_TurnSpeed: 15
   m_LeftHandTurnAction:
     m_UseReference: 0
     m_Action:
@@ -1746,6 +1746,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: XR Origin
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835553573746817164, guid: 23e550b0a6bbc4143b66097020e310d8,
+        type: 3}
+      propertyPath: m_MoveSpeed
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4835553573746817165, guid: 23e550b0a6bbc4143b66097020e310d8,
         type: 3}
