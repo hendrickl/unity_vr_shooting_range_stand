@@ -5,29 +5,39 @@ public class GunManager : MonoBehaviour
 {
     private RaycastHit hit;
     private bool _lightIsOn = false;
-    private int _currentLightIndex = 0;
+    private int _currentLightIndex = 0; // Index of the current light being turned on
     private bool _hasReload = false;
+
     // * * *
-    [SerializeField] private int _munitionStock;
-    [SerializeField] private int _munitionReload;
+    // Variables related to bullets remaining 
+    [SerializeField] private int _munitionStock; // Current amount of bullets available
+    [SerializeField] private int _munitionReload; // Amount of bullets available when reload
+
+    // * * *
+    // Variables related to score information 
     [SerializeField] private int _headScore;
     [SerializeField] private int _bodyScore;
-    // * * *
     [SerializeField] private TMP_Text _munitionsText;
     [SerializeField] private TMP_Text _headScoreText;
     [SerializeField] private TMP_Text _bodyScoreText;
+
     // * * *
+    // Variables related to the bullets and impacts
     [SerializeField] private GameObject _bulletPrefab;
     [SerializeField] private GameObject _impactPrefab;
-    [SerializeField] private GameObject _targetFixedContainer;
+    [SerializeField] private GameObject _targetFixedContainer; // Container game object to parent impact objects to
     [SerializeField] private Transform _bulletSpawnPosition;
-    [SerializeField] private float _bulletForce = 100f;
+    [SerializeField] private float _bulletForce;
+
     // * * *
+    // Variables related to audio
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip _audioClipMunition0;
     [SerializeField] private AudioClip _audioClipShoot;
     [SerializeField] private AudioClip _audioClipReload;
+
     // * * *
+    // Array of lights to turn on when making a headshot
     [SerializeField] private Light[] _lights = new Light[10];
 
     private void OnTriggerEnter(Collider other)
