@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -47,8 +46,6 @@ public class GameManager : MonoBehaviour
             throw new UnityException();
         }
 
-        print("Stop audio");
         _audioSource.Stop();
-        // _audioSource.volume = 0f;
     }
 }

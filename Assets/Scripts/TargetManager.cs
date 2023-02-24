@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TargetManager : MonoBehaviour
@@ -29,7 +27,7 @@ public class TargetManager : MonoBehaviour
     {
         if (_activateMovement && !_switch)
         {
-            ActivateMovingTarget();
+            ActivateMovingTarget(_speed);
         }
     }
 
@@ -38,10 +36,10 @@ public class TargetManager : MonoBehaviour
         PlayAudioClip(_impactSound);
     }
 
-    public void ActivateMovingTarget()
+    public void ActivateMovingTarget(float speed)
     {
         _activateMovement = true;
-        _speed = 1.5f;
+        speed = _speed;
 
         float _distance = Vector3.Distance(transform.position, _currentTarget);
 
@@ -64,10 +62,10 @@ public class TargetManager : MonoBehaviour
         }
     }
 
-    public void DeactivateMovingTarget()
+    public void DeactivateMovingTarget(float speed)
     {
         _activateMovement = false;
-        _speed = 0f;
+        speed = 0f;
         gameObject.transform.position = _fixedTargetTowardBgPosition.position;
     }
 
@@ -93,7 +91,7 @@ public class TargetManager : MonoBehaviour
     {
         if (!_audioSource)
         {
-            throw new UnityException();
+            throw new UnityException("The Audiosource is not initialized");
         }
 
         _audioSource.clip = clip;
@@ -105,12 +103,9 @@ public class TargetManager : MonoBehaviour
     {
         if (!_audioSource)
         {
-            Debug.LogWarning("Audio source is not defined");
-            throw new UnityException();
+            throw new UnityException("The Audiosource is not initialized");
         }
 
-        print("Stop audio");
         _audioSource.Stop();
-        // _audioSource.volume = 0f;
     }
 }

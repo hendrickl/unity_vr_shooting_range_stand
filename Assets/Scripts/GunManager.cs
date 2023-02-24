@@ -1,36 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using TMPro;
 
 public class GunManager : MonoBehaviour
 {
     private RaycastHit hit;
-    private int _munitionStock = 10;
-    private int _headScore = 0;
-    private int _bodyScore = 0;
     private bool _lightIsOn = false;
     private int _currentLightIndex = 0;
     private bool _hasReload = false;
-
+    // * * *
+    [SerializeField] private int _munitionStock;
+    [SerializeField] private int _munitionReload;
+    [SerializeField] private int _headScore;
+    [SerializeField] private int _bodyScore;
+    // * * *
     [SerializeField] private TMP_Text _munitionsText;
     [SerializeField] private TMP_Text _headScoreText;
     [SerializeField] private TMP_Text _bodyScoreText;
-
+    // * * *
     [SerializeField] private GameObject _bulletPrefab;
     [SerializeField] private GameObject _impactPrefab;
     [SerializeField] private GameObject _targetFixedContainer;
-    [SerializeField] private GameObject _targetMovingContainer;
     [SerializeField] private Transform _bulletSpawnPosition;
     [SerializeField] private float _bulletForce = 100f;
-
+    // * * *
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip _audioClipMunition0;
     [SerializeField] private AudioClip _audioClipShoot;
     [SerializeField] private AudioClip _audioClipReload;
-    [SerializeField] private AudioClip _audioClipReloadMunition;
-
+    // * * *
     [SerializeField] private Light[] _lights = new Light[10];
 
     private void OnTriggerEnter(Collider other)
@@ -92,7 +89,7 @@ public class GunManager : MonoBehaviour
             _hasReload = true;
             PlayAudioClip(_audioClipReload);
             other.gameObject.SetActive(false);
-            _munitionStock = 10;
+            _munitionStock = _munitionReload;
         }
     }
 
@@ -107,12 +104,9 @@ public class GunManager : MonoBehaviour
     {
         if (!_audioSource)
         {
-            Debug.LogWarning("Audio source is not defined");
-            throw new UnityException();
+            throw new UnityException("The Audiosource is not initialized");
         }
 
-        print("Stop audio");
-        // _audioSource.volume = 0f;
         _audioSource.Stop();
     }
 
