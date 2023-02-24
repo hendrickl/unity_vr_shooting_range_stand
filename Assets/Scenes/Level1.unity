@@ -729,6 +729,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6932c4c03dd5cd04586f2bcd9ff5b603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _munitionStock: 10
+  _munitionReload: 10
+  _headScore: 0
+  _bodyScore: 0
   _munitionsText: {fileID: 2123368194}
   _headScoreText: {fileID: 237786258}
   _bodyScoreText: {fileID: 1203132040}
@@ -737,15 +741,12 @@ MonoBehaviour:
   _impactPrefab: {fileID: 1439645569859799976, guid: 7f5a1c1c96943c7408a430f380125907,
     type: 3}
   _targetFixedContainer: {fileID: 353738698}
-  _targetMovingContainer: {fileID: 0}
   _bulletSpawnPosition: {fileID: 1799287818}
   _bulletForce: 100
   _audioSource: {fileID: 194501881}
   _audioClipMunition0: {fileID: 8300000, guid: 81bf476e682d0a3428f4d1bf6b68ea28, type: 3}
   _audioClipShoot: {fileID: 8300000, guid: 9fa6dc784d19b1e4fb70e7d827a5d600, type: 3}
   _audioClipReload: {fileID: 8300000, guid: c09493657b24f9b40bf7430a3c12925f, type: 3}
-  _audioClipReloadMunition: {fileID: 8300000, guid: c09493657b24f9b40bf7430a3c12925f,
-    type: 3}
   _lights:
   - {fileID: 301381085}
   - {fileID: 1319790539}
@@ -1528,7 +1529,7 @@ MonoBehaviour:
   _movingTargetPositionB: {fileID: 800294044}
   _fixedTargetTowardPlayerPosition: {fileID: 1925245146}
   _fixedTargetTowardBgPosition: {fileID: 120948793}
-  _speed: 0
+  _speed: 1.5
   _speedOnSwitch: 1.5
   _audioSource: {fileID: 353738704}
   _impactSound: {fileID: 8300000, guid: 39cf9f1c5bb3834428578e145be91b15, type: 3}
@@ -1640,6 +1641,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6932c4c03dd5cd04586f2bcd9ff5b603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _munitionStock: 10
+  _munitionReload: 0
+  _headScore: 0
+  _bodyScore: 0
   _munitionsText: {fileID: 2123368194}
   _headScoreText: {fileID: 237786258}
   _bodyScoreText: {fileID: 1203132040}
@@ -1648,15 +1653,12 @@ MonoBehaviour:
   _impactPrefab: {fileID: 1439645569859799976, guid: 7f5a1c1c96943c7408a430f380125907,
     type: 3}
   _targetFixedContainer: {fileID: 353738698}
-  _targetMovingContainer: {fileID: 0}
   _bulletSpawnPosition: {fileID: 1799287818}
   _bulletForce: 100
   _audioSource: {fileID: 194501881}
   _audioClipMunition0: {fileID: 8300000, guid: 81bf476e682d0a3428f4d1bf6b68ea28, type: 3}
   _audioClipShoot: {fileID: 8300000, guid: 9fa6dc784d19b1e4fb70e7d827a5d600, type: 3}
   _audioClipReload: {fileID: 8300000, guid: c09493657b24f9b40bf7430a3c12925f, type: 3}
-  _audioClipReloadMunition: {fileID: 8300000, guid: c09493657b24f9b40bf7430a3c12925f,
-    type: 3}
   _lights:
   - {fileID: 301381085}
   - {fileID: 1319790539}
@@ -5602,6 +5604,11 @@ PrefabInstance:
       objectReference: {fileID: 1396487064}
     - target: {fileID: 5834205468633787105, guid: f23642c6d790058488e86f319ea70cd0,
         type: 3}
+      propertyPath: m_HoverExited.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5834205468633787105, guid: f23642c6d790058488e86f319ea70cd0,
+        type: 3}
       propertyPath: m_HoverExited.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 353738703}
@@ -8072,6 +8079,11 @@ PrefabInstance:
       propertyPath: m_Colliders.Array.data[1]
       value: 
       objectReference: {fileID: 3522219193543294867}
+    - target: {fileID: 5834205468633787105, guid: f23642c6d790058488e86f319ea70cd0,
+        type: 3}
+      propertyPath: m_HoverExited.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5834205468633787105, guid: f23642c6d790058488e86f319ea70cd0,
         type: 3}
       propertyPath: m_HoverExited.m_PersistentCalls.m_Calls.Array.data[0].m_Target
